@@ -7,11 +7,11 @@ class FunksController < ApplicationController
 	def create
 		@user = User.find(params[:id])
 
-		new_funk = params.require(:funks).permit(:content)
+		new_funk = params.require(:funk).permit(:content)
 		
 		funk = Funk.create(new_funk)
 		@user.funks << funk
-		redirect_to "/users/#{user.id}/funks"
+		redirect_to "/users/#{@user.id}/funks"
 	end
 
 	def new
