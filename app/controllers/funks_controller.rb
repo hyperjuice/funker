@@ -14,23 +14,23 @@ class FunksController < ApplicationController
 		redirect_to "/users/#{@user.id}/funks"
 	end
 
-	def new
+	# def new
 		
-	end
+	# end
 
-	def edit
+	# def edit
 		
-	end
+	# end
 
-	def show
+	# def show
 
-	end
+	# end
 
-	def update
+	# def update
 		
-	end
+	# end
 
-	def destroy
+	# def destroy
 		
-	end
+	# end
 end

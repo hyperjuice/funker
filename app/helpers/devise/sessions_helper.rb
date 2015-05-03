@@ -1,4 +1,4 @@
-module SessionsHelper
+module Devise::SessionsHelper
 	def login(user)
 		session[:user_id] = user.id
 		@current_user = user
