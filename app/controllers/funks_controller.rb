@@ -1,5 +1,5 @@
 class FunksController < ApplicationController
-	def indes
+	def index
 		
 	end
 
