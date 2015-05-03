@@ -1,13 +1,17 @@
 class FunksController < ApplicationController
 	def index
-		@funks = Funk.all
-		render :index
+		@user = User.find(params[:id])
+		@funks = @user.funks
 	end
 
 	def create
-		funk = params.require(:funks).permit(:content)
-		Funk.create(funk)
-		redirect_to "/funks"
+		@user = User.find(params[:id])
+
+		new_funk = params.require(:funks).permit(:content)
+		
+		funk = Funk.create(new_funk)
+		@user.funks << funk
+		redirect_to "/users/#{user.id}/funks"
 	end
 
 	def new
@@ -19,8 +23,7 @@ class FunksController < ApplicationController
 	end
 
 	def show
-		id = params[:id]
-		@plane = Plane.find(id)
+
 	end
 
 	def update
