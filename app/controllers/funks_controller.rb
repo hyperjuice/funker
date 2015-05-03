@@ -1,9 +1,16 @@
 class FunksController < ApplicationController
 	def index
-		
+		@funks = Funk.all
+		render :index
 	end
 
-	def show
+	def create
+		funk = params.require(:funks).permit(:content)
+		Funk.create(funk)
+		redirect_to "/funks"
+	end
+
+	def new
 		
 	end
 
@@ -11,7 +18,16 @@ class FunksController < ApplicationController
 		
 	end
 
-	def new
+	def show
+		id = params[:id]
+		@plane = Plane.find(id)
+	end
+
+	def update
+		
+	end
+
+	def destroy
 		
 	end
 end
