@@ -3,12 +3,12 @@ class FunksController < ApplicationController
  	before_action :authenticate_user!, except: :index
 
 	def index
-		@user = User.find(params[:user_id])
+		@user = User.find(params[:id])
 		@funks = @user.funks
 	end
 
 	def create
-		@user = User.find(params[:user_id])
+		@user = User.find(params[:id])
 
 		new_funk = params.require(:funk).permit(:content)
 		
