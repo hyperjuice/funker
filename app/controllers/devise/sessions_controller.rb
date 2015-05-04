@@ -10,12 +10,12 @@ class SessionsController < ApplicationController
 			redirect_to user_path(user.id)
 		else
 			flash[:error] = "Failed to authenticate. Try again."
-			redirect_to "/login"
+			redirect_to "/users/sign_in"
 		end		
 	end
 
 	def destroy
 		logout()
-		redirect_to "/login"
+		redirect_to "/users/sign_in"
 	end
 end
