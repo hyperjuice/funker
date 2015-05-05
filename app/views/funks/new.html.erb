@@ -1,1 +1,5 @@
-new.html.erb
+<%= form_for [current_user, @funk] do |f| %>
+	<%= f.hidden_field :user_id %>
+	<%= f.text_field :content %>
+	<%= f.submit %>
+<% end %>

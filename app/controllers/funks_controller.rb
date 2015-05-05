@@ -3,19 +3,22 @@ class FunksController < ApplicationController
  	before_action :authenticate_user!, except: :index
 
 	def index
-		# @user = User.find(params[:id])
-		# @funks = @user.funks
-		@funks = Funk.all
+		if current_user.to_param != params[:user_id].to_i
+			redirect_to root_path, notice: 'Not authorized'
+			return false
+		end
+
+		@user = current_user
+		@funks = @user.funks
 	end
 
 	def create
-		@user = User.find(params[:id])
-
 		new_funk = params.require(:funk).permit(:content)
 		
 		funk = Funk.create(new_funk)
-		@user.funks << funk
-		redirect_to "/users/#{@user.id}/funks"
+		current_user.funks << funk
+
+		redirect_to user_funks_path(user_id: current_user.to_param)
 	end
 
 	def new
@@ -36,5 +39,10 @@ class FunksController < ApplicationController
 
 	def destroy
 		
+	end
+
+private
+	def set_funk
+		@funk = Funk.find(params[:id])
 	end
 end
